@@ -28,5 +28,4 @@ target/
 # IntelliJ
 .idea/
 
-# secrets
-secrets.txt
+.vscode/

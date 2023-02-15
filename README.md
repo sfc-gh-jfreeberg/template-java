@@ -4,7 +4,7 @@ Use this project template to start writing data applications on Snowflake using 
 
 ## Start Here
 
-First, set your account URL, username, role, database, and schema in [app.properties](src/main/resources/app.properties).
+First, set your account URL, username, role, database, and schema in [app.properties](src/main/resources/dev.properties).
 
 Next, set an environment variable with your Snowflake password:
 
