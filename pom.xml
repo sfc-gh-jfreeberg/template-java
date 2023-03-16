@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.snowflake</groupId>
-  <artifactId>template</artifactId>
+  <artifactId>snowpark-java-template</artifactId>
   <version>0.0.1</version>
 
   <name>Java 11 Project Template for Snowflake</name>
