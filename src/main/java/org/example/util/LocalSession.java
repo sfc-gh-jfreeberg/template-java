@@ -1,4 +1,4 @@
-package com.example.util;
+package org.example.util;
 
 import com.snowflake.snowpark_java.Session;
 
@@ -8,7 +8,7 @@ public class LocalSession {
             String password = System.getenv("SNOWFLAKE_PASSWORD");
 
             return Session.builder()
-                .configFile("src/main/resources/dev.properties")
+                .configFile("dev.properties")
                 .config("password", password)
                 .create();
         } catch (NullPointerException e) {

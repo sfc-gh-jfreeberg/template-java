@@ -1,9 +1,7 @@
-package com.example.procedure;
+package org.example.procedure;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
-import com.example.procedure.App;
 
 public class AppTest 
 {
