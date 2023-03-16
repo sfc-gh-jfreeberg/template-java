@@ -30,7 +30,7 @@ jobs:
           cache: 'maven'
 
       - name: Test
-        run: mvn test
+        run: mvn test --no-transfer-progress
 
   lint:
     runs-on: ubuntu-latest
