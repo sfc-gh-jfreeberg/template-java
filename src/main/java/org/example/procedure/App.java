@@ -9,10 +9,10 @@ import com.snowflake.snowpark_java.types.StructType;
 import org.example.udf.Function;
 
 
-public class App 
-{
+public class App {
 
-    public static Integer run(Session session) {
+    public static Long run(Session session) {
+
         DataFrame df = session.createDataFrame(
             new Row[]{
                 Row.create("Welcome to ", "Snowflake!"),
@@ -28,19 +28,20 @@ public class App
             new DataType[]{DataTypes.StringType, DataTypes.StringType},
             DataTypes.StringType);
 
-        df.select(
+        DataFrame df2 = df.select(
             combine.apply(
                 Functions.col("Hello"),
-                Functions.col("World"))
-            )
-        .show();
+                Functions.col("World")).as("Hello world")
+            ).sort(Functions.col("Hello world").desc());
 
-        return 1;
+        df2.show();
+
+        return df.count();
     }
 
     public static void main(String[] args) {
-        Session session = LocalSession.getLocalSession();
+        Session session = LocalSession.getSession();
 
-        App.run(session, "");
+        App.run(session);
     }
 }
