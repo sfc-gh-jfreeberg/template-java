@@ -2,15 +2,18 @@ package org.example.procedure;
 
 import org.example.util.LocalSession;
 import com.snowflake.snowpark_java.*;
-import com.snowflake.snowpark_java.types.DataType;
-import com.snowflake.snowpark_java.types.DataTypes;
-import com.snowflake.snowpark_java.types.StructField;
-import com.snowflake.snowpark_java.types.StructType;
+import com.snowflake.snowpark_java.types.*;
 import org.example.udf.Function;
 
 
 public class App {
 
+    /**
+     * A simple stored procedure which creates a 2x2 DataFrame, prints it
+     * to the console, and returns the row count.
+     * @param session A Snowflake Session
+     * @return The count of the DataFrame
+     */
     public static Long run(Session session) {
 
         DataFrame df = session.createDataFrame(
@@ -39,6 +42,10 @@ public class App {
         return df.count();
     }
 
+    /**
+     * Main entrypoint. Runs the stored procedure locally for development.
+     * @param args
+     */
     public static void main(String[] args) {
         Session session = LocalSession.getSession();
 

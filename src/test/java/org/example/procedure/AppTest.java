@@ -1,7 +1,6 @@
 package org.example.procedure;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.example.util.LocalSession;
 import org.junit.Before;

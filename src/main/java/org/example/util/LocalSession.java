@@ -21,7 +21,7 @@ public class LocalSession {
     
     private static Session createSessionFromSNOWSQLEnvVars() {
         Map<String, String> configMap = new HashMap<>() {{
-            put("URL", getEnv("SNOWSQL_ACCOUNT")+".snowflakecomputing.com");
+            put("URL", getEnv("SNOWSQL_ACCOUNT") + ".snowflakecomputing.com");
             put("USER", getEnv("SNOWSQL_USER"));
             put("PASSWORD", getEnv("SNOWSQL_PWD"));
             put("DB", getEnv("SNOWSQL_DATABASE"));
@@ -43,7 +43,8 @@ public class LocalSession {
                 .config("password", password)
                 .create();
         } catch (NullPointerException e) {
-            System.out.println("ERROR: Environment variable, SNOWSQL_PWD, not found. Please set this variable");
+            System.out.println("ERROR: Environment variable, SNOWSQL_PWD, not found. " +
+            "Please set this variable");
             e.printStackTrace();
             return null;
         }
