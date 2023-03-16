@@ -15,7 +15,7 @@ env:
   SNOWSQL_DATABASE: ${{ secrets.SNOWSQL_DATABASE }}
   SNOWSQL_SCHEMA: ${{ secrets.SNOWSQL_SCHEMA }}
   SNOWSQL_WAREHOUSE: ${{ secrets.SNOWSQL_WAREHOUSE }}
-  ARTIFACT_NAME: scala-sources-${{ github.ref_name }}.jar
+  ARTIFACT_NAME: java-sources-${{ github.ref_name }}.jar
 
 jobs:
   build:
@@ -32,12 +32,15 @@ jobs:
 
       - name: Test and build app
         run: mvn package --no-transfer-progress
+      
+      - name: Rename artifact with commit ID or release name
+        run: mv ${{ github.workspace }}/target/*.jar ${{ env.ARTIFACT_NAME }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: java-app-${{ github.ref_name}}
+          path: ${{ env.ARTIFACT_NAME }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +51,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: scala-app-${{github.ref_name}}
+          name: java-app-${{ github.ref_name}}
 
       - name: Install SnowSQL
         run: |
