@@ -40,7 +40,7 @@ Optional: You can set this env var permanently by editing your bash profile (on 
 
 ### Test connection
 
-Once you've set your credentials, you can test your connection by running the `run()` command in [`App.java`](src/main/scala/org/example/procedure/App.java). You can run this method directly from your IDE.
+Once you've set your credentials, you can test your connection by running the `run()` command in [`App.java`](src/main/java/org/example/procedure/App.java). You can run this method directly from your IDE.
 
 You should see the following output in your terminal:
 
